@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFE9A6"/>
+      <stop offset="58%" stop-color="#F2B54C"/>
+      <stop offset="100%" stop-color="#D58B2A"/>
+    </linearGradient>
+    <linearGradient id="goldHi" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.55)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.30"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#shadow)">
+    <!-- OVAL (unchanged) -->
+    <ellipse id="collar" cx="100" cy="55" rx="46" ry="28"
+      fill="url(#gold)"
+      stroke="rgba(120,80,0,0.30)"
+      stroke-width="4"/>
+
+    <path id="collarHi" d="M62 50
+             C74 36 88 30 100 30
+             C112 30 126 36 138 50
+             C126 60 112 66 100 66
+             C88 66 74 60 62 50 Z"
+          fill="url(#goldHi)" opacity="0.9"/>
+
+    <!-- TRIANGLE: SAME SHAPE, ONLY POINTS DOWN; ATTACHED (starts at y=83 = oval bottom) -->
+    <path id="pointerTip" d="M72 83
+             L128 83
+             L100 170
+             Z"
+      fill="url(#gold)"
+      stroke="rgba(120,80,0,0.30)"
+      stroke-width="4"
+      stroke-linejoin="round"/>
+
+    <path id="pointerTipHi" d="M83 90
+             L117 90
+             L100 142
+             Z"
+      fill="rgba(255,255,255,0.22)"/>
+  </g>
+</svg>

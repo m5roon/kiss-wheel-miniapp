@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360">
+  <defs>
+    <linearGradient id="wood" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#E7A15A"/>
+      <stop offset="0.55" stop-color="#C77832"/>
+      <stop offset="1" stop-color="#9A4F1C"/>
+    </linearGradient>
+    <linearGradient id="wood2" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="rgba(255,255,255,0.35)"/>
+      <stop offset="1" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+    <filter id="softShadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- ground shadow -->
+  <ellipse cx="400" cy="320" rx="300" ry="34" fill="rgba(0,0,0,0.18)"/>
+
+  <g filter="url(#softShadow)">
+    <!-- base -->
+    <path d="M170 290
+             C170 250 210 220 260 220
+             H540
+             C590 220 630 250 630 290
+             V300
+             C630 325 610 345 585 345
+             H215
+             C190 345 170 325 170 300
+             Z" fill="url(#wood)"/>
+
+    <!-- base highlight -->
+    <path d="M200 250
+             C210 235 230 226 255 226
+             H545
+             C570 226 590 235 600 250
+             C575 260 540 266 500 268
+             H300
+             C260 266 225 260 200 250
+             Z" fill="url(#wood2)" opacity="0.9"/>
+
+    <!-- top pedestal -->
+    <path d="M300 210
+             C300 180 330 155 365 155
+             H435
+             C470 155 500 180 500 210
+             V220
+             H300 Z" fill="url(#wood)"/>
+
+    <!-- pedestal bevel -->
+    <path d="M320 180
+             C332 170 348 165 365 165
+             H435
+             C452 165 468 170 480 180
+             C465 194 445 202 420 204
+             H380
+             C355 202 335 194 320 180
+             Z" fill="rgba(255,255,255,0.25)"/>
+
+    <!-- outline for crispness -->
+    <path d="M170 290
+             C170 250 210 220 260 220
+             H540
+             C590 220 630 250 630 290
+             V300
+             C630 325 610 345 585 345
+             H215
+             C190 345 170 325 170 300
+             Z" fill="none" stroke="rgba(0,0,0,0.18)" stroke-width="6"/>
+    <path d="M300 210
+             C300 180 330 155 365 155
+             H435
+             C470 155 500 180 500 210
+             V220
+             H300 Z" fill="none" stroke="rgba(0,0,0,0.18)" stroke-width="6"/>
+  </g>
+</svg>

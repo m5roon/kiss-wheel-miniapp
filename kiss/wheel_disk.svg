@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
+    <filter id="textShadow" x="-40%" y="-40%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+    <radialGradient id="gloss" cx="35%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.35)"/>
+      <stop offset="60%" stop-color="rgba(255,255,255,0.06)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.10)"/>
+    </radialGradient>
+  </defs>
+  <g filter="url(#shadow)">
+    <path d="M 256.00,256.00 L 256.00,26.00 A 230.00,230.00 0 0 1 418.63,93.37 Z" fill="#F6C84B" />
+    <path d="M 256.00,256.00 L 418.63,93.37 A 230.00,230.00 0 0 1 486.00,256.00 Z" fill="#74C84E" />
+    <path d="M 256.00,256.00 L 486.00,256.00 A 230.00,230.00 0 0 1 418.63,418.63 Z" fill="#35C7A8" />
+    <path d="M 256.00,256.00 L 418.63,418.63 A 230.00,230.00 0 0 1 256.00,486.00 Z" fill="#2FA7D8" />
+    <path d="M 256.00,256.00 L 256.00,486.00 A 230.00,230.00 0 0 1 93.37,418.63 Z" fill="#3B6FDB" />
+    <path d="M 256.00,256.00 L 93.37,418.63 A 230.00,230.00 0 0 1 26.00,256.00 Z" fill="#7A55D8" />
+    <path d="M 256.00,256.00 L 26.00,256.00 A 230.00,230.00 0 0 1 93.37,93.37 Z" fill="#D45AC6" />
+    <path d="M 256.00,256.00 L 93.37,93.37 A 230.00,230.00 0 0 1 256.00,26.00 Z" fill="#F06A6A" />
+    <circle cx="256.0" cy="256.0" r="230" fill="url(#gloss)" opacity="0.9"/>
+    <line x1="256.00" y1="256.00" x2="256.00" y2="26.00" stroke="rgba(255,255,255,0.72)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="256.00" y1="256.00" x2="418.63" y2="93.37" stroke="rgba(255,255,255,0.72)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="256.00" y1="256.00" x2="486.00" y2="256.00" stroke="rgba(255,255,255,0.72)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="256.00" y1="256.00" x2="418.63" y2="418.63" stroke="rgba(255,255,255,0.72)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="256.00" y1="256.00" x2="256.00" y2="486.00" stroke="rgba(255,255,255,0.72)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="256.00" y1="256.00" x2="93.37" y2="418.63" stroke="rgba(255,255,255,0.72)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="256.00" y1="256.00" x2="26.00" y2="256.00" stroke="rgba(255,255,255,0.72)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="256.00" y1="256.00" x2="93.37" y2="93.37" stroke="rgba(255,255,255,0.72)" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <circle cx="256.0" cy="256.0" r="230" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="8"/>
+  <text x="310.57" y="124.25" text-anchor="middle" dominant-baseline="middle" font-family="system-ui, -apple-system, Segoe UI, Arial" font-size="64" font-weight="800" fill="#ffffff" filter="url(#textShadow)" transform="rotate(22.50 310.57 124.25)">2</text>
+  <text x="387.75" y="201.43" text-anchor="middle" dominant-baseline="middle" font-family="system-ui, -apple-system, Segoe UI, Arial" font-size="64" font-weight="800" fill="#ffffff" filter="url(#textShadow)" transform="rotate(67.50 387.75 201.43)">4</text>
+  <text x="387.75" y="310.57" text-anchor="middle" dominant-baseline="middle" font-family="system-ui, -apple-system, Segoe UI, Arial" font-size="64" font-weight="800" fill="#ffffff" filter="url(#textShadow)" transform="rotate(112.50 387.75 310.57)">6</text>
+  <text x="310.57" y="387.75" text-anchor="middle" dominant-baseline="middle" font-family="system-ui, -apple-system, Segoe UI, Arial" font-size="64" font-weight="800" fill="#ffffff" filter="url(#textShadow)" transform="rotate(157.50 310.57 387.75)">8</text>
+  <text x="201.43" y="387.75" text-anchor="middle" dominant-baseline="middle" font-family="system-ui, -apple-system, Segoe UI, Arial" font-size="64" font-weight="800" fill="#ffffff" filter="url(#textShadow)" transform="rotate(202.50 201.43 387.75)">10</text>
+  <text x="124.25" y="310.57" text-anchor="middle" dominant-baseline="middle" font-family="system-ui, -apple-system, Segoe UI, Arial" font-size="64" font-weight="800" fill="#ffffff" filter="url(#textShadow)" transform="rotate(247.50 124.25 310.57)">12</text>
+  <text x="124.25" y="201.43" text-anchor="middle" dominant-baseline="middle" font-family="system-ui, -apple-system, Segoe UI, Arial" font-size="64" font-weight="800" fill="#ffffff" filter="url(#textShadow)" transform="rotate(292.50 124.25 201.43)">14</text>
+  <text x="201.43" y="124.25" text-anchor="middle" dominant-baseline="middle" font-family="system-ui, -apple-system, Segoe UI, Arial" font-size="64" font-weight="800" fill="#ffffff" filter="url(#textShadow)" transform="rotate(337.50 201.43 124.25)">16</text>
+</svg>

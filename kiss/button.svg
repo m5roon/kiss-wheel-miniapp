@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 240">
+  <defs>
+    <linearGradient id="btn" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#FF7BC0"/>
+      <stop offset="0.55" stop-color="#FF3CA2"/>
+      <stop offset="1" stop-color="#E61E84"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="rgba(255,255,255,0.55)"/>
+      <stop offset="1" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+    <filter id="btnShadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
+    <filter id="txtShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#btnShadow)">
+    <!-- outer -->
+    <rect x="40" y="40" width="820" height="160" rx="80" fill="url(#btn)" stroke="rgba(120,0,60,0.25)" stroke-width="10"/>
+    <!-- inner shine -->
+    <path d="M90 70
+             C130 50 190 46 250 46
+             H650
+             C710 46 770 50 810 70
+             C760 95 700 106 630 108
+             H270
+             C200 106 140 95 90 70 Z"
+          fill="url(#shine)" opacity="0.85"/>
+    <!-- inner lip -->
+    <rect x="70" y="62" width="760" height="124" rx="62" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="8"/>
+  </g>
+
+  <!-- centered text -->
+  <text x="450" y="122"
+        text-anchor="middle"
+        dominant-baseline="middle"
+        font-family="system-ui, -apple-system, Segoe UI, Arial"
+        font-size="88"
+        font-weight="900"
+        fill="#FFFFFF"
+        filter="url(#txtShadow)"
+        letter-spacing="0.5">Крутить!</text>
+</svg>

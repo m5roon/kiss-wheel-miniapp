@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kiss Wheel</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div class="stage">
+
+    <!-- ВЕРХНИЙ БАННЕР -->
+    <div class="top-hint">
+      <div class="top-hint__line1">❤️ Крутани ❤️</div>
+      <div class="top-hint__line2">чтобы получить поцелуйчик 💋💖</div>
+    </div>
+
+    <!-- фон -->
+    <img class="layer" src="./kiss/bg_no_hearts.svg" alt="">
+
+    <!-- сердечки -->
+    <img class="bg-heart h1" src="./kiss/heart.svg" alt="">
+    <img class="bg-heart h2" src="./kiss/heart.svg" alt="">
+    <img class="bg-heart h3" src="./kiss/heart.svg" alt="">
+    <img class="bg-heart h4" src="./kiss/heart.svg" alt="">
+    <img class="bg-heart h5" src="./kiss/heart.svg" alt="">
+
+    <!-- колесо -->
+    <img class="stand" src="./kiss/stand.svg" alt="">
+    <img class="wheel-frame" src="./kiss/wheel_frame.svg" alt="">
+    <img class="wheel-disk" id="disk" src="./kiss/wheel_disk.svg" alt="">
+    <img class="center-cap" src="./kiss/center_cap.svg" alt="">
+    <img class="pointer" src="./kiss/pointer.svg" alt="">
+
+    <!-- кнопка -->
+    <button class="hit" id="spinBtn" aria-label="Крутить"></button>
+    <img class="btn-img" src="./kiss/button.svg" alt="">
+  </div>
+
+  <!-- MODAL -->
+  <div id="resultModal" class="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-modal-close></div>
+
+    <div class="modal__card" role="dialog" aria-modal="true">
+      <button class="modal__close" type="button" data-modal-close>×</button>
+
+      <div class="modal__title">Результат</div>
+
+      <div class="modal__value">
+        💖 Выпало
+        <span id="resultValue" class="modal__number">0</span>
+        поцелуев 💋<br>
+        Забери их у своего принца 👑😘
+      </div>
+
+      <button class="modal__btn" type="button" data-modal-close>Ок</button>
+    </div>
+  </div>
+
+<script>
+  /* ===== КОЛЕСО ===== */
+  const VALUES = [2,4,6,8,10,12,14,16];
+  const N = VALUES.length;
+  const STEP = 360 / N;
+
+  // стрелка вверх
+  const POINTER_ANGLE = -90;
+
+  // сдвиг под твой SVG (уже подобран)
+  const INDEX_SHIFT = 6;
+
+  const disk = document.getElementById('disk');
+  const btn = document.getElementById('spinBtn');
+  const modal = document.getElementById('resultModal');
+  const resultValueEl = document.getElementById('resultValue');
+
+  let angle = 0;
+  let spinning = false;
+
+  const norm = a => ((a % 360) + 360) % 360;
+
+  function easeOut(t){
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  function setAngle(a){
+    angle = a;
+    disk.style.transform = `translate(-50%, -50%) rotate(${a}deg)`;
+  }
+
+  function openModal(value){
+    resultValueEl.textContent = value;
+    modal.classList.add('is-open');
+    document.documentElement.classList.add('no-scroll');
+  }
+
+  function closeModal(){
+    modal.classList.remove('is-open');
+    document.documentElement.classList.remove('no-scroll');
+  }
+
+  modal.addEventListener('click', e => {
+    if (e.target.closest('[data-modal-close]')) closeModal();
+  });
+
+  /* ===== РАСЧЁТ СЕКТОРА ПОД СТРЕЛКОЙ ===== */
+
+  function rawIndexUnderPointer(finalAngle){
+    const theta = norm(POINTER_ANGLE - finalAngle);
+    return Math.floor(norm(theta + STEP / 2) / STEP) % N;
+  }
+
+  function valueUnderPointer(finalAngle){
+    const raw = rawIndexUnderPointer(finalAngle);
+    const idx = (raw - INDEX_SHIFT + N) % N;
+    return VALUES[idx];
+  }
+
+  /* ===== SNAP В ЦЕНТР СЕКТОРА ===== */
+
+  function shortestDelta(from, to){
+    return ((to - from + 540) % 360) - 180;
+  }
+
+  function snapToRawIndexCenter(rawIdx, done){
+    // ВАЖНО: центр сектора = rawIdx*STEP + STEP/2
+    const targetAngle = POINTER_ANGLE - (rawIdx * STEP) - (STEP / 2);
+
+    const desired = angle + shortestDelta(angle, targetAngle);
+
+    const dur = 220;
+    const t0 = performance.now();
+    const a0 = angle;
+    const a1 = desired;
+
+    function tick(t){
+      const p = Math.min(1, (t - t0) / dur);
+      setAngle(a0 + (a1 - a0) * easeOut(p));
+      if (p < 1) requestAnimationFrame(tick);
+      else done();
+    }
+    requestAnimationFrame(tick);
+  }
+
+  /* ===== SPIN ===== */
+
+  function spin(){
+    if (spinning) return;
+    spinning = true;
+    btn.disabled = true;
+
+    const start = angle;
+    const end = start + 360 * 6 + Math.random() * 360;
+    const dur = 3800;
+    const t0 = performance.now();
+
+    function tick(t){
+      const p = Math.min(1, (t - t0) / dur);
+      setAngle(start + (end - start) * easeOut(p));
+
+      if (p < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        const raw = rawIndexUnderPointer(angle);
+        const value = valueUnderPointer(angle);
+
+        // СНАП В ЦЕНТР (без попадания на край)
+        snapToRawIndexCenter(raw, () => {
+          openModal(value);
+          spinning = false;
+          btn.disabled = false;
+        });
+      }
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  btn.addEventListener('click', spin);
+  setAngle(0);
+</script>
+</body>
+</html>
